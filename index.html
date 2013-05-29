@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Leaflet Edit in OSM</title>
+        <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
+        <!--[if lte IE 8]>
+            <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css" />
+        <![endif]-->
+        <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+        <style>
+        body {
+            background:#fff;
+            max-width: 900px; margin: 20px auto; font: normal 12px/20px sans-serif;
+        }
+        #map {
+            background:#fff;
+            max-width: 900px;
+            height: 500px;
+        }
+        </style>
+    </head>
+    <body>
+        <h1>Edit in OSM</h1>
+        <p>does what it says on the tin.
+        <a href='https://github.com/osmlab/leaflet-edit-osm'>fork, copy, download,
+            learn about it on GitHub</a>.</p>
+        <div id='map'></div>
+        <script src='leaflet-edit-osm.js'></script>
+        <script>
+            var map = L.map('map').setView([38.9, -77.1], 11);
+            if (window.devicePixelRatio > 1) {
+                L.tileLayer('http://a.tiles.mapbox.com/v3/tmcw.map-6s7ux6dj/{z}/{x}/{y}.png', {
+                    detectRetina: true
+                }).addTo(map);
+            } else {
+                L.tileLayer('http://a.tiles.mapbox.com/v3/examples.map-20v6611k/{z}/{x}/{y}.png');
+            }
+            new leafletEditOsm().addTo(map);
+        </script>
+    </body>
+</html>
